@@ -78,4 +78,18 @@ public class SearchTest {
 
     }
 
+    @Test
+    public void testNoElement() throws InterruptedException {
+        driver.findElement(By.name("q")).sendKeys("asdaaaaaaaaaaaaasdasdasdasdasdxcvxcvxcvsdfsdfsdfsdfsdfsfsdf");
+
+        driver.findElement(By.id("search_button_homepage")).submit();
+
+        WebElement results = driver.findElement(By.cssSelector(".results.js-results"));
+
+        List<WebElement> resultList = results.findElements(By.tagName("div"));
+
+        assertNotNull(resultList.get(0));
+
+    }
+
 }
